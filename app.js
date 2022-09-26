@@ -212,7 +212,7 @@ function submit() {
 			alert("Server returned: ",e.target.responseText);
 		}
 	};
-	xhr.open("POST","http://3.83.124.107/covid_detection",true);
+	xhr.open("POST","https://api.leadinghao.me/covid_detection",true);
 	xhr.send(data);
 
 
