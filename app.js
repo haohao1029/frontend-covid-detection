@@ -173,7 +173,7 @@ function submit() {
 	
 	data.append("age", age);
 	data.append("is_return_user", is_return_user_value);
-	data.append("cough",coughHeavyBlob, "cough.wav");
+	data.append("coughBlob",coughHeavyBlob, "cough.wav");
 
 	var xhr=new XMLHttpRequest();
 	xhr.onload=function(e) {
@@ -204,13 +204,15 @@ function submit() {
 			`)
 		}
 		if (this.status == 400) {
+			loader.classList.add('done');
 			alert("Server returned: ",e.target.responseText);
 		}
 		if (this.status == 500) {
+			loader.classList.add('done');
 			alert("Server returned: ",e.target.responseText);
 		}
 	};
-	xhr.open("POST","http://100.27.0.83/covid_detection",true);
+	xhr.open("POST","http://3.83.124.107/covid_detection",true);
 	xhr.send(data);
 
 
