@@ -552,7 +552,7 @@ var theme = {
           {
             preloader.classList.add('done');
           }
-        }, 1000)
+        }, 500)
       }
     }
   },
