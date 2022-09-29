@@ -34,9 +34,12 @@ function startRecording() {
 	*/
 
 	navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+
 		console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
-        $("#recordButton").attr("onclick", "stopRecording()");
-        $("#recordButton").html("Stop");
+		$("#controls").empty();
+		$("#controls").append(`
+			<button class="btn btn-primary" id="stopCough" onclick="stopRecording()">Stop Recording</button>
+		`)
 		/*
 			create an audio context after getUserMedia is called
 			sampleRate might change after getUserMedia is called, like it does on macOS when recording through AirPods
@@ -59,6 +62,7 @@ function startRecording() {
 		//start the recording process
 		rec.record()
 
+	
 		console.log("Recording started");
 
 	}).catch(function(err) {
@@ -214,6 +218,10 @@ function submit() {
 	};
 	xhr.open("POST","https://api.leadinghao.me/covid_detection",true);
 	xhr.send(data);
-
-
   }
+
+function playSample() {
+	const audio = new Audio($("#sample-heavy-cough").attr("src"));
+    audio.play();
+
+}
