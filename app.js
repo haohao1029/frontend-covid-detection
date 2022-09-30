@@ -173,7 +173,16 @@ function submit() {
 
 	const loader = document.querySelector('.page-loader');
 	loader.classList.remove('done');
-
+	$(".page-loader").append(`
+		<h1 style="
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		color: #f78b77;
+	">AI Is Analyzing</h1>
+	`);
 	
 	data.append("age", age);
 	data.append("is_return_user", is_return_user_value);
@@ -183,7 +192,6 @@ function submit() {
 	xhr.onload=function(e) {
 		console.log(this.status)
 		if(this.status == 200) {
-			loader.classList.add('done');
 			result = JSON.parse(e.target.responseText);
 			$("#content").empty();
 			$("#content").append(`
@@ -208,13 +216,12 @@ function submit() {
 			`)
 		}
 		if (this.status == 400) {
-			loader.classList.add('done');
 			alert("Server returned: ",e.target.responseText);
 		}
 		if (this.status == 500) {
-			loader.classList.add('done');
-			alert("Server returned: ",e.target.responseText);
+			alert("Server error: 500, try again or contact 010-9361029 for help");
 		}
+		loader.classList.add('done');
 	};
 	xhr.open("POST","https://api.leadinghao.me/covid_detection",true);
 	xhr.send(data);
