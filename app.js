@@ -197,7 +197,7 @@ function submit() {
 			$("#content").append(`
 			<div
 			class=""
-			style="height: 80vh; position: relative; "
+			style="height: 85vh; position: relative; "
 			>
 				<div
 				style="
@@ -209,8 +209,9 @@ function submit() {
 					text-align: center;
 				"
 				>
-			  <h1 >Congratulation You are ${result.covid_status}.</h1>
-			  <a href="/#recommended-clinic" class="btn btn-primary">Recommended Online Clinic</a>
+			  <h1>Congratulation You are ${result.covid_status}.</h1>
+			  <p>Our recommended online clinic - <a href="/">DoctorOnCall</a></p>
+			  <a href="/" class="btn btn-primary">Recommended Online Clinic</a>
 			</div>
 		  </div>
 			`)
