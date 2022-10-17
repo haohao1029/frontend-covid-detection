@@ -210,7 +210,7 @@ function submit() {
 				"
 				>
 			  <h1 >Congratulation You are ${result.covid_status}.</h1>
-			  <a href="/" class="btn btn-primary">Back to home page</a>
+			  <a href="/#recommended-clinic" class="btn btn-primary">Recommended Online Clinic</a>
 			</div>
 		  </div>
 			`)
