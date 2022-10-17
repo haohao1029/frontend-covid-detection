@@ -223,7 +223,7 @@ function submit() {
 		}
 		loader.classList.add('done');
 	};
-	xhr.open("POST","https://api.leadinghao.me/covid_detection",true);
+	xhr.open("POST","https://runcloudapi.leadinghao.me/covid_detection",true);
 	xhr.send(data);
   }
 

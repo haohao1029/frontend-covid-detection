@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="An impressive and flawless site template that includes constious UI elements and countless features, attractive ready-made blocks and rich pages, basically everything you need to create a unique and professional website."
+    />
+    <meta
+      name="keywords"
+      content="bootstrap 5, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template"
+    />
+    <meta name="author" content="elemis" />
+    <title>COVID 19 Cough Audio Detection</title>
+    <link rel="shortcut icon" href="./assets/img/favicon.png" />
+    <link rel="stylesheet" href="./assets/css/plugins.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/colors/orange.css" />
+  </head>
+
+  <body>
+    <div class="page-loader"></div>
+
+    <div class="content-wrapper">
+      <header class="wrapper bg-soft-primary">
+        <nav
+          class="navbar navbar-expand-lg extended navbar-light navbar-bg-light caret-none"
+        >
+          <div class="container flex-lg-column">
+            <div
+              class="topbar d-flex flex-row w-100 justify-content-between align-items-center"
+            >
+              <div class="navbar-brand">
+                <h1><a href="/">COVID 19 DETECTION</a></h1>
+              </div>
+              <div class="navbar-other ms-auto">
+                <ul class="navbar-nav flex-row align-items-center">
+                  <li class="nav-item dropdown language-select text-uppercase">
+                    <a
+                      class="nav-link dropdown-item dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      >En</a
+                    >
+                    <ul class="dropdown-menu">
+                      <li class="nav-item">
+                        <a class="dropdown-item" href="#">EN</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="dropdown-item" href="#">BM</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="dropdown-item" href="#">中文</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item d-lg-none">
+                    <button class="hamburger offcanvas-nav-btn">
+                      <span></span>
+                    </button>
+                  </li>
+                </ul>
+                <!-- /.navbar-nav -->
+              </div>
+              <!-- /.navbar-other -->
+            </div>
+            <!-- /.d-flex -->
+            <div
+              class="navbar-collapse-wrapper bg-white d-flex flex-row align-items-center"
+            >
+              <div
+                class="navbar-collapse offcanvas offcanvas-nav offcanvas-start"
+              ></div>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <section style="display: none">
+        <audio src="" id="heavy-cough"></audio>
+        <audio src="sample-cough-heavy.wav" id="sample-heavy-cough"></audio>
+      </section>
+      <section class="wrapper bg-soft-primary" id="content">
+        <div
+        class=""
+        style="height: 80vh; position: relative; "
+        >
+            <div
+            style="
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+            "
+            >
+          <h1 >Congratulation You are ${result.covid_status}.</h1>
+          <a href="/" class="btn btn-primary">Back to home page</a>
+        </div>
+      </div>
+    <!-- /.container -->
+      </section>
+    </div>
+    <!-- /.content-wrapper -->
+
+    <div class="progress-wrap">
+      <svg
+        class="progress-circle svg-content"
+        width="100%"
+        height="100%"
+        viewBox="-1 -1 102 102"
+      >
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+      </svg>
+    </div>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery.min.js"
+    ></script>
+
+    <script src="./recorder.js"></script>
+    <script src="./assets/js/plugins.js"></script>
+    <script src="./app.js"></script>
+    <script src="./assets/js/theme.js"></script>
+    <script>
+
+
+    </script>
+  </body>
+</html>
