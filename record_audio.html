@@ -1,202 +1,385 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="An impressive and flawless site template that includes constious UI elements and countless features, attractive ready-made blocks and rich pages, basically everything you need to create a unique and professional website."
-    />
-    <meta
-      name="keywords"
-      content="bootstrap 5, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template"
-    />
-    <meta name="author" content="elemis" />
-    <title>COVID 19 Cough Audio Detection</title>
-    <link rel="shortcut icon" href="./assets/img/favicon.png" />
-    <link rel="stylesheet" href="./assets/css/plugins.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/colors/orange.css" />
-  </head>
 
-  <body>
-    <div class="page-loader"></div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="An impressive and flawless site template that includes constious UI elements and countless features, attractive ready-made blocks and rich pages, basically everything you need to create a unique and professional website." />
+  <meta name="keywords"
+    content="bootstrap 5, business, corporate, creative, gulp, marketing, minimal, modern, multipurpose, one page, responsive, saas, sass, seo, startup, html5 template, site template" />
+  <meta name="author" content="elemis" />
+  <title>COVID 19 Cough Audio Detection</title>
+  <link rel="shortcut icon" href="./assets/img/favicon.png" />
+  <link rel="stylesheet" href="./assets/css/plugins.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/colors/orange.css" />
+  <link rel="stylesheet" href="./app.css" />
+</head>
 
-    <div class="content-wrapper">
-      <header class="wrapper bg-soft-primary">
-        <nav
-          class="navbar navbar-expand-lg extended navbar-light navbar-bg-light caret-none"
-        >
-          <div class="container flex-lg-column">
-            <div
-              class="topbar d-flex flex-row w-100 justify-content-between align-items-center"
-            >
-              <div class="navbar-brand">
-                <h1><a href="/">COVID 19 DETECTION</a></h1>
-              </div>
-              <div class="navbar-other ms-auto">
-                <ul class="navbar-nav flex-row align-items-center">
-                  <li class="nav-item dropdown language-select text-uppercase">
-                    <a
-                      class="nav-link dropdown-item dropdown-toggle"
-                      href="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      >En</a
-                    >
-                    <ul class="dropdown-menu">
-                      <li class="nav-item">
-                        <a class="dropdown-item" href="#">EN</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item" href="#">BM</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="dropdown-item" href="#">中文</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item d-lg-none">
-                    <button class="hamburger offcanvas-nav-btn">
-                      <span></span>
-                    </button>
-                  </li>
-                </ul>
-                <!-- /.navbar-nav -->
-              </div>
-              <!-- /.navbar-other -->
+<body>
+  <div class="page-loader"></div>
+
+  <div class="content-wrapper">
+    <header class="wrapper bg-soft-primary">
+      <nav class="navbar navbar-expand-lg extended navbar-light navbar-bg-light caret-none">
+        <div class="container flex-lg-column">
+          <div class="topbar d-flex flex-row w-100 justify-content-between align-items-center">
+            <div class="navbar-brand">
+              <h1><a href="/">COVID 19 DETECTION</a></h1>
             </div>
-            <!-- /.d-flex -->
-            <div
-              class="navbar-collapse-wrapper bg-white d-flex flex-row align-items-center"
-            >
-              <div
-                class="navbar-collapse offcanvas offcanvas-nav offcanvas-start"
-              ></div>
+            <div class="navbar-other ms-auto">
+              <ul class="navbar-nav flex-row align-items-center">
+                <li class="nav-item dropdown language-select text-uppercase">
+                  <a class="nav-link dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">En</a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-item">
+                      <a class="dropdown-item" href="#">EN</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item" href="#">BM</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="dropdown-item" href="#">中文</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item d-lg-none">
+                  <button class="hamburger offcanvas-nav-btn">
+                    <span></span>
+                  </button>
+                </li>
+              </ul>
+              <!-- /.navbar-nav -->
             </div>
+            <!-- /.navbar-other -->
           </div>
-        </nav>
-      </header>
-      <section style="display: none">
-        <audio src="" id="heavy-cough"></audio>
-        <audio src="sample-cough-heavy.wav" id="sample-heavy-cough"></audio>
-      </section>
-      <section class="wrapper bg-soft-primary" id="content">
-        <div class="container">
-          <div class="row gx-lg-8 gx-xl-12 gy-10 mb-5 align-items-center">
-            <div class="card">
-              <div class="card-body">
-                <p>
-                  <i class="uil uil-info-circle"></i> Please make sure you are
-                  in a quiet environment and keep your device near from your
-                  face
-                </p>
-                <div class="mb-3 row">
-                  <label for="age" class="col-sm-2 col-form-label"
-                    >What Is Your Age?</label
-                  >
-                  <div class="col-sm-10">
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="age"
-                      name="age"
-                      placeholder="22"
-                    />
-                  </div>
-                </div>
-
-                <div class="mb-3 row">
-                  <label for="" class="col-sm-2 col-form-label"
-                    >Are You A Return User?</label
-                  >
-                  <div class="col-sm-10">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="is_return_user"
-                        id="is_return_user"
-                      />
-                      <label class="form-check-label" for="is_return_user">
-                        Yes
-                      </label>
-                    </div>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        name="is_return_user"
-                        id="is_return_user_no"
-                        checked
-                      />
-                      <label class="form-check-label" for="is_return_user_no">
-                        No
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="mb-3 row">
-                  <label for="age" class="col-sm-2 col-form-label"
-                    >Cough Heavy (3 times) (record more than 5 seconds)</label
-                  >
-                  <div id="controls" class="col-sm-10">
-                    <button
-                      id="recordButton"
-                      class="btn btn-primary"
-                      onclick="startRecording()"
-                    >
-                      Start Record
-                    </button>
-                    <button
-                      id="playSampleButton"
-                      class="btn btn-primary"
-                      onclick="playSample()"
-                    >
-                      Play Sample
-                    </button>
-                  </div>
-                </div>
-                <button class="btn btn-primary" onclick="submit()">
-                  Submit
-                </button>
-                <!-- /.form-floating -->
-              </div>
-              <!--/.card-body -->
-              <!--/.card-footer -->
+          <!-- /.d-flex -->
+          <div class="navbar-collapse-wrapper bg-white d-flex flex-row align-items-center">
+            <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start"></div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section style="display: none">
+    </section>
+    <section class="wrapper bg-soft-primary" id="content">
+      <div class="container">
+        <div class="row gx-lg-8 gx-xl-12 gy-10 mb-5 align-items-center">
+          <div class="card">
+            <div class="card-header">
+              <h1 class="title" id="title">Disclaimer</h1>
             </div>
+            <div class="card-body">
+              This study aims to build upon previous research that has shown a high sensitivity in identifying
+              respiratory illness based on the human voice. Any effective disease detection tools will be integrated
+              into an app at a later time. Participation in this study is entirely voluntary, and the information
+              collected will not include any personally identifiable details.
+              <br /><br />
+              The recording and data collection process should take approximately five minutes. Please ensure that your
+              device is approximately 20 cm away from your face during the recording, and that the recording environment
+              is quiet. Before sharing the recording device with others, please sanitize it. The Ethics Committee at the
+              Indian Institute of Science has approved the non-invasive recording procedure.
+              <br /><br />
+              If you have any questions, please don't hesitate to contact us at tp051098@apu.mail.edu.my.
+
+
+              <!--/.card-body -->
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary" id="prev-btn" onclick="handleStep('')">Prev</button>
+              <button class="btn btn-primary" id="next-btn" onclick="handleStep('MetaData')"> Next</button>
+              <button class="btn btn-primary" id="submit-btn" onclick="submit()"> Submit</button>
+
+              <!-- <button class="btn btn-primary" onclick="submit()">
+              Submit
+            </button> -->
+            </div>
+            <!--/.card-footer -->
           </div>
           <!-- /.row -->
         </div>
         <!-- /.container -->
-      </section>
-    </div>
-    <!-- /.content-wrapper -->
+    </section>
+  </div>
+  <!-- /.content-wrapper -->
 
-    <div class="progress-wrap">
-      <svg
-        class="progress-circle svg-content"
-        width="100%"
-        height="100%"
-        viewBox="-1 -1 102 102"
-      >
-        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-      </svg>
-    </div>
-    <script
-      type="text/javascript"
-      src="https://code.jquery.com/jquery.min.js"
-    ></script>
+  <div class="progress-wrap">
+    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+    </svg>
+  </div>
+  <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
 
-    <script src="./recorder.js"></script>
-    <script src="./assets/js/plugins.js"></script>
-    <script src="./app.js"></script>
-    <script src="./assets/js/theme.js"></script>
-    <script>
+  <script src="./recorder.js"></script>
+  <script src="./assets/js/plugins.js"></script>
+  <script src="./app.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script>
+    let steps = ["Disclaimer", "MetaData", "Health Status", "Recording"]
+    let currStep = "Disclaimer";
 
+    $("#prev-btn").hide();
+    $("#submit-btn").hide();
 
-    </script>
-  </body>
+    symptomsColumns = [["Cold", "cold"], ["Cough", "cough"], ["Fever", "fever"], ["Diarrhoea", "diarrhoea"], ["Sore Throat", "sore_throat"]]
+    conditionColumns = [["Loss of Smell", "loss_of_smell"], ["Muscle Pain", "muscle_pain"], ["Fatigue", "fatigue"], ["Breathing Difficulties", "breathing_difficulties"]]
+    respiratoryColumns = [["Pneumonia", "pneumonia"], ["Asthma", "asthma"], ["Others", "others_resp"]]
+    preExistingConditionColumns = [["Hypertension", "hypertension"], ["Ischemic Heart Disease", "ischemic_heart_disease"], ["Diabetes", "diabetes"], ["Others", "others_preexist"]]
+
+    function handleStep(step) {
+      currStep = step;
+      $(".card-body").empty();
+      if (currStep == "Disclaimer") {
+        $("#title").text("Disclaimer");
+        $("#prev-btn").hide();
+        html = `
+        This study aims to build upon previous research that has shown a high sensitivity in identifying respiratory illness based on the human voice. Any effective disease detection tools will be integrated into an app at a later time. Participation in this study is entirely voluntary, and the information collected will not include any personally identifiable details.
+        <br/><br/>
+        The recording and data collection process should take approximately five minutes. Please ensure that your device is approximately 20 cm away from your face during the recording, and that the recording environment is quiet. Before sharing the recording device with others, please sanitize it. The Ethics Committee at the Indian Institute of Science has approved the non-invasive recording procedure.
+        <br/><br/>
+        If you have any questions, please don't hesitate to contact us at tp051098@apu.mail.edu.my.`
+        $(".card-body").append(html);
+        $("#next-btn").attr("onclick", "handleStep('MetaData')");
+      }
+      if (currStep == "MetaData") {
+        $("#title").text("MetaData");
+        $("#prev-btn").show();
+        $("#prev-btn").attr("onclick", "handleStep('Disclaimer')");
+        $("#next-btn").attr("onclick", "handleStep('Health Status')");
+        html = `
+              <div class="mb-3 row">
+                <label for="age" class="col-sm-2 col-form-label">What Is Your Age?</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="age" name="age" placeholder="22" value=${jsondata.age}
+                    onchange="dataChange('age')" />
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="" class="col-sm-2 col-form-label">Gender?</label>
+                <div class="col-sm-10 ">
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" onChange="handleRadioData('gender')" name="gender" id="male" value="male" />
+                    <label class="form-check-label" for="male">
+                      Male
+                    </label>
+                  </div>
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" onChange="handleRadioData('gender')" name="gender" id="female" value="female" />
+                    <label class="form-check-label" for="female" >
+                      Female
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="" class="col-sm-2 col-form-label">Smoker?</label>
+                <div class="col-sm-10 ">
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" onChange="handleRadioData('smoker')" name="smoker" id="smoker" value="y" />
+                    <label class="form-check-label" for="smoker">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" onChange="handleRadioData('smoker')" name="smoker" id="not_smoker" value="n" />
+                    <label class="form-check-label" for="not_smoker" >
+                      No
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label for="" class="col-sm-2 col-form-label">Vaccination Dose Status?</label>
+                <div class="col-sm-10 ">
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" name="vaccination_dose" id="both_dose" value="both doses"
+                      checked />
+                    <label class="form-check-label" for="both_dose">
+                      2 doses
+                    </label>
+                  </div>
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" name="vaccination_dose" id="one_dose" value="one dose"/>
+                    <label class="form-check-label" for="one_dose">
+                      1 dose
+                    </label>
+                  </div>
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" name="vaccination_dose" id="no_dose" value="no dose"/>
+                    <label class="form-check-label" for="no_dose">
+                      Not Done
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- /.form-floating -->
+            </div>
+        `
+        $(".card-body").append(html);
+        $('input[name="gender"][value="' + jsondata.gender + '"]').prop('checked', true);
+        $('input[name="smoker"][value="' + jsondata.smoker + '"]').prop('checked', true);
+        $('input[name="vaccination_dose"][value="' + jsondata.vaccination_dose + '"]').prop('checked', true);
+
+      }
+      if (currStep == "Health Status") {
+        $("#title").text("Health Status");
+        html = `
+            <div class="row">
+              <div class="symptoms">
+                <label for="symptoms" class="col-form-label">Do you have any of these symptoms?</label>
+                <div class="symptoms-checkbox">
+                </div>
+              </div>
+              <div class="conditions">
+                <label for="conditions" class="col-form-label">Do you have any of these conditions?</label>
+                <div class="conditions-checkbox">
+                </div>
+              </div>
+              <div class="respiratory">
+                <label for="conditions" class="col-form-label">Do you have any of these respiratory ailments?</label>
+                <div class="respiratory-checkbox">
+                </div>
+              </div>
+              <div class="pre-existing-condition">
+                <label for="conditions" class="col-form-label">Do you have any of these pre-existing conditions?</label>
+                <div class="pre-existing-condition-checkbox">
+                </div>
+              </div>
+            </div>
+        `
+        $(".card-body").append(html);
+        for (i = 0; i < symptomsColumns.length; i++) {
+          $(".symptoms-checkbox").append(`
+            <div class="form-check checkbox">
+              <input class="form-check-input" onChange="handleCheckBoxData('${symptomsColumns[i][1]}')" type="checkbox" id="${symptomsColumns[i][1]}">
+              <label class="form-check-label" for="${symptomsColumns[i][1]}"> ${symptomsColumns[i][0]} </label>
+            </div>
+          `);
+          $(`#${symptomsColumns[i][1]}`).prop("checked", jsondata[symptomsColumns[i][1]]);
+        }
+        for (i = 0; i < conditionColumns.length; i++) {
+          $('.conditions-checkbox').append(`
+            <div class="form-check checkbox">
+              <input class="form-check-input" onChange="handleCheckBoxData('${conditionColumns[i][1]}')" type="checkbox" id="${conditionColumns[i][1]}">
+              <label class="form-check-label" for="${conditionColumns[i][1]}"> ${conditionColumns[i][0]} </label>
+            </div>
+          `)
+          $(`#${conditionColumns[i][1]}`).prop("checked", jsondata[conditionColumns[i][1]]);
+        }
+        for (i = 0; i < respiratoryColumns.length; i++) {
+          $('.respiratory-checkbox').append(`
+              <div class="form-check checkbox">
+                <input class="form-check-input" onChange="handleCheckBoxData('${respiratoryColumns[i][1]}')" type="checkbox" id="${respiratoryColumns[i][1]}">
+                <label class="form-check-label" for="${respiratoryColumns[i][1]}"> ${respiratoryColumns[i][0]} </label>
+              </div>
+            `)
+          $(`#${respiratoryColumns[i][1]}`).prop("checked", jsondata[respiratoryColumns[i][1]]);
+        }
+        for (i = 0; i < preExistingConditionColumns.length; i++) {
+          $('.pre-existing-condition-checkbox').append(`
+        <div class="form-check checkbox">
+            <input class="form-check-input" onChange="handleCheckBoxData('${preExistingConditionColumns[i][1]}')" type="checkbox" id="${preExistingConditionColumns[i][1]}">
+            <label class="form-check-label" for="${preExistingConditionColumns[i][1]}"> ${preExistingConditionColumns[i][0]} </label>
+          </div>
+      `)
+          $(`#${preExistingConditionColumns[i][1]}`).prop("checked", jsondata[preExistingConditionColumns[i][1]]);
+        }
+        $("#prev-btn").attr("onclick", "handleStep('MetaData')");
+        $("#next-btn").attr("onclick", "handleStep('Recording')");
+        $("#next-btn").show();
+        $("#submit-btn").hide();
+
+      }
+      if (currStep == "Recording") {
+        $("#title").text("Recording");
+        audios = [
+          { audio_name: "breathing-shallow", sample_audio: "./assets/sample/breathing-shallow.wav", label: "Breathing (shallow)", message: "Breath fast 5 times" },
+          { audio_name: "breathing-deep", sample_audio: "./assets/sample/breathing-deep.wav", label: "Breathing (deep)", message: "Breath deeply times" },
+          { audio_name: "cough-shallow", sample_audio: "./assets/sample/cough-shallow.wav", label: "Cough (shallow)", message: "Cough mildly 3 times" },
+          { audio_name: "cough-heavy", sample_audio: "./assets/sample/cough-heavy.wav", label: "Cough (heavy)", message: "Cough deeply 3 times" },
+          { audio_name: "vowel-a", sample_audio: "./assets/sample/vowel-a.wav", label: "Vowel /a/", message: "Say /a/ as in 'made' and sustain as long as possible" },
+          { audio_name: "vowel-e", sample_audio: "./assets/sample/vowel-e.wav", label: "Vowel /e/", message: "Say /e/ as in 'beet' and sustain as long as possible" },
+          { audio_name: "vowel-o", sample_audio: "./assets/sample/vowel-o.wav", label: "Vowel /o/", message: "Say /o/ as in 'cool' and sustain as long as possible" },
+          { audio_name: "counting-normal", sample_audio: "./assets/sample/counting-normal.wav", label: "Counting (normal)", message: "Count from 1 to 20" },
+          { audio_name: "counting-fast", sample_audio: "./assets/sample/counting-fast.wav", label: "Counting (fast)", message: "Count from 1 to 20 faster" }
+        ]
+
+        html = `
+              <p>
+                <i class="uil uil-info-circle"></i> Please make sure you are
+                in a quiet environment and keep your device near from your
+                face
+              </p>
+              <div class="recordings">
+              </div>
+        `
+        $(".card-body").append(html);
+        console.log(jsondata)
+        for (i = 0; i < audios.length; i++) {
+          audio = audios[i];
+          if (recordings[audio.audio_name]) {
+            $(".recordings").append(`
+              <div class="mb-3 row">
+                <label for="age" class="col-sm-2 col-form-label text-success" id="${audio.audio_name}-title">${audio.label}</label>
+                <audio src="" id="${audio.audio_name}"></audio>
+                <audio src="${audio.sample_audio}" id="sample-${audio.audio_name}"></audio>
+                <p>${audio.message}</p>
+                <div id="${audio.audio_name}-controls" class="col-sm-10 audio-button-content">
+                  <button class="btn btn-primary" id="playRecordedAudio" onclick="playRecordedAudio('${audio.audio_name}')">Play</button>
+                  <button id="recordButton"class="btn btn-primary" onclick="saveAudio('${audio.audio_name}', ${i + 1})">Save</button>
+                  <button id="recordButton"class="btn btn-primary" onclick="goRecord('${audio.audio_name}')">Record Again</button>
+                </div>
+              </div>
+            `)
+            const url = URL.createObjectURL(recordings[audio.audio_name]);
+            $(`#${audio.audio_name}`).attr("src", url);
+
+          }
+          else {
+            $(".recordings").append(`
+            <div class="mb-3 row">
+              <label for="age" class="col-sm-2 col-form-label" id="${audio.audio_name}-title">${audio.label}</label>
+              <audio src="" id="${audio.audio_name}"></audio>
+              <audio src="${audio.sample_audio}" id="sample-${audio.audio_name}"></audio>
+              <div id="${audio.audio_name}-controls" class="col-sm-10 audio-button-content">
+                <p>${audio.message}</p>
+                <button id="recordButton" class="btn btn-primary" onclick="startRecording('${audio.audio_name}', ${i}, '${audio.message}')">Start Record</button>
+                <button id="playSampleButton" class="btn btn-primary" onclick="playSample('sample-${audio.audio_name}')">Play Sample</button>
+              </div>
+            </div>
+          `)
+          }
+        }
+
+        $(`.audio-button-content`).hide()
+        for (i = 0; i < audios.length; i++) {
+          if (recordings[audios[i].audio_name] == null) {
+            $(`#${audios[i].audio_name}-controls`).show()
+            break;
+          }
+        }
+
+        $("#prev-btn").attr("onclick", "handleStep('Health Status')");
+        $("#next-btn").hide();
+        $("#submit-btn").show();
+      }
+    }
+
+    function handleRadioData(column) {
+      jsondata[column] = $(`input[name=${column}]:checked`).val();
+    }
+
+    function handleCheckBoxData(column) {
+      if ($(`#${column}`).is(":checked")) {
+        jsondata[column] = true;
+      } else {
+        jsondata[column] = false;
+      }
+    }
+
+  </script>
+</body>
+
 </html>

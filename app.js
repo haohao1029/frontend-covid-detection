@@ -1,5 +1,42 @@
 URL = window.URL || window.webkitURL;
+const jsondata = {
+	age: 0,
+	gender: 'male',
+	smoker: 'y',
+	vaccination_dose: 'no doses',
+	cold: false,
+	cough: false,
+	fever: false,
+	diarrhoea: false,
+	sore_throat: false,
+	loss_of_smell: false,
+	muscle_pain: false,
+	fatigue: false,
+	breathing_difficulties: false,
+	pneumonia: false,
+	asthma: false,
+	chronic_lung_disease: false,
+	others_resp: false,
+	hypertension: false,
+	ischemic_heart_disease: false,
+	diabetes: false,
+	others_preexist: false,
+}
 
+let recordings = {
+	"breathing-shallow": null,
+	"breathing-deep": null,
+	"cough-shallow": null,
+	"cough-heavy": null,
+	"vowel-a": null,
+	"vowel-e": null,
+	"vowel-o": null,
+	"counting-normal": null,
+	"counting-fast": null,
+};
+// object key recordings
+
+let recordingsKey = Object.keys(recordings);
 let gumStream; 						//stream from getUserMedia()
 let rec; 							//Recorder.js object
 let input; 							//MediaStreamAudioSourceNode we'll be recording
@@ -8,37 +45,34 @@ let coughHeavyBlob;
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 let audioContext //audio context to help us record
 
-const recordButton = document.getElementById("recordButton");
-const stopButton = document.getElementById("stopButton");
 
-//add events to those 2 buttons
-
-function startRecording() {
+function startRecording(audio_name, index, hint) {
 	console.log("recordButton clicked");
 
 	/*
 		Simple constraints object, for more advanced audio features see
 		https://addpipe.com/blog/audio-constraints-getusermedia/
 	*/
-    
-    const constraints = { audio: true, video:false }
 
- 	/*
-    	Disable the record button until we get a success or fail from getUserMedia() 
-	*/
+	const constraints = { audio: true, video: false }
+
+	/*
+	  Disable the record button until we get a success or fail from getUserMedia() 
+  */
 
 
 	/*
-    	We're using the standard promise based getUserMedia() 
-    	https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+		We're using the standard promise based getUserMedia() 
+		https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
 	*/
 
-	navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+	navigator.mediaDevices.getUserMedia(constraints).then(function (stream) {
 
 		console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
-		$("#controls").empty();
-		$("#controls").append(`
-			<button class="btn btn-primary" id="stopCough" onclick="stopRecording()">Stop Recording</button>
+		$(`#${audio_name}-controls`).empty();
+		$(`#${audio_name}-controls`).append(`
+			<p>${hint}</p>
+			<button class="btn btn-primary" id="stop-${audio_name}" onclick="stopRecording('${audio_name}', ${index}, '${hint}')">Stop Recording</button>
 		`)
 		/*
 			create an audio context after getUserMedia is called
@@ -49,7 +83,7 @@ function startRecording() {
 
 		/*  assign to gumStream for later use  */
 		gumStream = stream;
-		
+
 		/* use the stream */
 		input = audioContext.createMediaStreamSource(stream);
 
@@ -57,122 +91,82 @@ function startRecording() {
 			Create the Recorder object and configure to record mono sound (1 channel)
 			Recording 2 channels  will double the file size
 		*/
-		rec = new Recorder(input,{numChannels:1})
+		rec = new Recorder(input, { numChannels: 1 })
 
 		//start the recording process
 		rec.record()
 
-	
+
 		console.log("Recording started");
 
-	}).catch(function(err) {
-	  	//enable the record button if getUserMedia() fails
+	}).catch(function (err) {
+		//enable the record button if getUserMedia() fails
 	});
 }
 
 
-function stopRecording() {
+function stopRecording(audio_name, index, hint) {
 	console.log("stopButton clicked");
 	//reset button just in case the recording is stopped while paused
-	
+
 	//tell the recorder to stop the recording
 	rec.stop();
 
 	//stop microphone access
 	gumStream.getAudioTracks()[0].stop();
 
-	//create the wav blob and pass it on to createDownloadLink
-	// blob = rec.exportWAV(createDownloadLink);
 	rec.exportWAV(function (blob) {
-        coughHeavyBlob = blob;
-        const url = URL.createObjectURL(blob);
-        $("#heavy-cough").attr("src", url);
-    });
-    $("#controls").empty();
-    $("#controls").append(`
-        <button class="btn btn-primary" id="playHeavyCough" onclick="playHeavyCough()">Play</button>
-        <button id="recordButton"class="btn btn-primary" onclick="goRecord()">Record Again</button>
+		coughHeavyBlob = blob;
+		recordings[audio_name] = blob;
+		const url = URL.createObjectURL(blob);
+		$(`#${audio_name}`).attr("src", url);
+	});
+	$(`#${audio_name}-controls`).empty();
+	$(`#${audio_name}-controls`).append(`
+		<p>${hint}</p>
+        <button class="btn btn-primary" id="playRecordedAudio" onclick="playRecordedAudio('${audio_name}')">Play</button>
+        <button id="recordButton"class="btn btn-primary" onclick="saveAudio('${audio_name}', ${index + 1})">Save</button>
+        <button id="recordButton"class="btn btn-primary" onclick="goRecord('${audio_name}')">Record Again</button>
     `)
 }
+function saveAudio(audio_name, nextAudioIndex) {
+	console.log(recordings)
+	$(`#${audio_name}-title`).addClass("text-success");
 
-function goRecord() {
-    $("#controls").empty();
-    $("#controls").append(`
-    <button id="recordButton"class="btn btn-primary" onclick="startRecording()">Start Record</button>
-    <button id="playSampleButton"class="btn btn-primary" onclick="playSample()">Play Sample</button>
+	$(`#${audio_name}-controls`).hide();
+	$(`#${recordingsKey[nextAudioIndex]}-controls`).show();
+}
+
+function goRecord(audio_name, index) {
+	$(`#${audio_name}-controls`).empty();
+	$(`#${audio_name}-controls`).append(`
+    <button id="recordButton"class="btn btn-primary" onclick="startRecording('${audio_name}', ${index})">Start Record</button>
+    <button id="playSampleButton"class="btn btn-primary" onclick="playSample('sample-${audio_name}')">Play Sample</button>
 `);
 }
-function createDownloadLink(blob) {
-    const url = URL.createObjectURL(blob);
-	var au = document.createElement('audio');
-	var li = document.createElement('li');
-	var link = document.createElement('a');
 
-	//name of .wav file to use during upload and download (without extendion)
-	var filename = new Date().toISOString();
-
-	//add controls to the <audio> element
-	au.controls = true;
-	au.src = url;
-	//save to disk link
-	link.href = url;
-	link.download = filename+".wav"; //download forces the browser to donwload the file using the  filename
-	link.innerHTML = "Save to disk";
-
-	//add the new audio element to li
-	li.appendChild(au);
-	
-	//add the filename to the li
-	li.appendChild(document.createTextNode(filename+".wav "))
-
-	//add the save to disk link to li
-	li.appendChild(link);
-	
-	//upload link
-	var upload = document.createElement('a');
-	upload.href="#";
-	upload.innerHTML = "Upload";
-	upload.addEventListener("click", function(event){
-		  var xhr=new XMLHttpRequest();
-		  xhr.onload=function(e) {
-		      if(this.readyState === 4) {
-		          console.log("Server returned: ",e.target.responseText);
-		      }
-		  };
-		  var fd=new FormData();
-		  fd.append("audio_data",blob, filename);
-		  xhr.open("POST","upload.php",true);
-		  xhr.send(fd);
-	})
-	li.appendChild(document.createTextNode (" "))//add a space in between
-	li.appendChild(upload)//add the upload link to li
-
-	//add the li element to the ol
-	recordingsList.appendChild(li);
+function playRecordedAudio(audio_name) {
+	const audio = new Audio($(`#${audio_name}`).attr("src"));
+	audio.play();
 }
 
-function playHeavyCough() {
-    const audio = new Audio($("#heavy-cough").attr("src"));
-    audio.play();
+function dataChange(inputname) {
+	value = $(`input[name='${inputname}']`).val();
+	jsondata[inputname] = value;
 }
-
 
 function submit() {
-	const age = document.getElementById("age").value;
-	if (age == "" || coughHeavyBlob == null || document.getElementById("heavy-cough").duration < 5) {
-		alert("Please fill all the fields, record your cough > 5 seconds, your audio is " + document.getElementById("heavy-cough").duration.toFixed(2) + " seconds");
+	if (Object.values(recordings).includes(null) || jsondata.age <= 0) {
+		alert("Please record all the audio samples and fill in your age");
 		return;
 	}
 
-	const is_return_user =
-	  document.getElementById("is_return_user").checked;
-	const is_return_user_value = is_return_user ? true : false;
-	let data = new FormData();
+	console.log(jsondata)
+	let formData = new FormData();
 
-
-
-	const loader = document.querySelector('.page-loader');
-	loader.classList.remove('done');
+	const loader = $('.page-loader');
+	console.log(loader)
+	loader.removeClass('done');
 	$(".page-loader").append(`
 		<h1 style="
 		position: absolute;
@@ -183,16 +177,20 @@ function submit() {
 		color: #f78b77;
 	">AI Is Analyzing</h1>
 	`);
-	
-	data.append("age", age);
-	data.append("is_return_user", is_return_user_value);
-	data.append("coughBlob",coughHeavyBlob, "cough.wav");
+	for (var key in jsondata) {
+		formData.append(key, jsondata[key]);
+	}
+	for (var key in recordings) {
+		formData.append(key.replace("-", ""), recordings[key], `${key}.wav`);
+	}
 
-	var xhr=new XMLHttpRequest();
-	xhr.onload=function(e) {
+
+	var xhr = new XMLHttpRequest();
+	xhr.onload = function (e) {
 		console.log(this.status)
-		if(this.status == 200) {
+		if (this.status == 200) {
 			result = JSON.parse(e.target.responseText);
+			message = result.message;
 			$("#content").empty();
 			$("#content").append(`
 			<div
@@ -209,27 +207,27 @@ function submit() {
 					text-align: center;
 				"
 				>
-			  <h1>Congratulation You are ${result.covid_status}.</h1>
-			  <p>Our recommended online clinic - <a href="/">DoctorOnCall</a></p>
+			  <h1>${message}</h1>
+			  <p>Our recommended online clinic - <a href="https://www.doctoroncall.com.my/">DoctorOnCall</a></p>
 			  <a href="/" class="btn btn-primary">Go Back Home</a>
 			</div>
-		  </div>
+			 </div>
 			`)
 		}
 		if (this.status == 400) {
-			alert("Server returned: ",e.target.responseText);
+			alert("Server returned: ", e.target.responseText);
 		}
 		if (this.status == 500) {
 			alert("Server error: 500, try again or contact 010-9361029 for help");
 		}
-		loader.classList.add('done');
+		loader.addClass('done');
 	};
-	xhr.open("POST","https://runcloudapi.leadinghao.me/covid_detection",true);
-	xhr.send(data);
-  }
+	xhr.open("POST", "https://covid-detection.leadinghao.me:8000/covid_detection", true);
+	xhr.send(formData);
+}
 
-function playSample() {
-	const audio = new Audio($("#sample-heavy-cough").attr("src"));
-    audio.play();
+function playSample(sampleHTMLId) {
+	const audio = new Audio($(`#${sampleHTMLId}`).attr("src"));
+	audio.play();
 
 }
