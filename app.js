@@ -126,7 +126,7 @@ function stopRecording(audio_name, index, hint) {
 		<p>${hint}</p>
         <button class="btn btn-primary" id="playRecordedAudio" onclick="playRecordedAudio('${audio_name}')">Play</button>
         <button id="recordButton"class="btn btn-primary" onclick="saveAudio('${audio_name}', ${index + 1})">Save</button>
-        <button id="recordButton"class="btn btn-primary" onclick="goRecord('${audio_name}')">Record Again</button>
+        <button id="recordButton"class="btn btn-primary" onclick="goRecord('${audio_name}', '${hint}')">Record Again</button>
     `)
 }
 function saveAudio(audio_name, nextAudioIndex) {
@@ -137,9 +137,10 @@ function saveAudio(audio_name, nextAudioIndex) {
 	$(`#${recordingsKey[nextAudioIndex]}-controls`).show();
 }
 
-function goRecord(audio_name, index) {
+function goRecord(audio_name, index, hint) {
 	$(`#${audio_name}-controls`).empty();
 	$(`#${audio_name}-controls`).append(`
+	<p>${hint}</p>
     <button id="recordButton"class="btn btn-primary" onclick="startRecording('${audio_name}', ${index})">Start Record</button>
     <button id="playSampleButton"class="btn btn-primary" onclick="playSample('sample-${audio_name}')">Play Sample</button>
 `);
