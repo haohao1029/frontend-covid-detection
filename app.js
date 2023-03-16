@@ -141,7 +141,7 @@ function goRecord(audio_name, index, hint) {
 	$(`#${audio_name}-controls`).empty();
 	$(`#${audio_name}-controls`).append(`
 	<p>${hint}</p>
-    <button id="recordButton"class="btn btn-primary" onclick="startRecording('${audio_name}', ${index})">Start Record</button>
+    <button id="recordButton"class="btn btn-primary" onclick="startRecording('${audio_name}', ${index}, '${hint}')">Start Record</button>
     <button id="playSampleButton"class="btn btn-primary" onclick="playSample('sample-${audio_name}')">Play Sample</button>
 `);
 }
