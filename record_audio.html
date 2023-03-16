@@ -329,7 +329,7 @@
                 <div id="${audio.audio_name}-controls" class="col-sm-10 audio-button-content">
                   <button class="btn btn-primary" id="playRecordedAudio" onclick="playRecordedAudio('${audio.audio_name}')">Play</button>
                   <button id="recordButton"class="btn btn-primary" onclick="saveAudio('${audio.audio_name}', ${i + 1})">Save</button>
-                  <button id="recordButton"class="btn btn-primary" onclick="goRecord('${audio_name}', ${index}, '${hint}')">Record Again</button>
+                  <button id="recordButton"class="btn btn-primary" onclick="goRecord('${audio.audio_name}', ${i}, '${audio.message}')">Record Again</button>
                 </div>
               </div>
             `)

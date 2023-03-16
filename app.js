@@ -169,15 +169,17 @@ function submit() {
 	console.log(loader)
 	loader.removeClass('done');
 	$(".page-loader").append(`
-		<h1 style="
+		<div style="
 		position: absolute;
 		top: 40%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		text-align: center;
-		color: #f78b77;
-	">AI Is Analyzing</h1>
+		
+	"><h1 style="color: #f78b77;">AI Is Analyzing Your Audio</h1>
 	<p>It may take 10 ~ 30 seconds</p>
+	</div>
+	
 	`);
 	for (var key in jsondata) {
 		formData.append(key, jsondata[key]);
