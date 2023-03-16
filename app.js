@@ -177,6 +177,7 @@ function submit() {
 		text-align: center;
 		color: #f78b77;
 	">AI Is Analyzing</h1>
+	<p>It may take 10 ~ 30 seconds</p>
 	`);
 	for (var key in jsondata) {
 		formData.append(key, jsondata[key]);
