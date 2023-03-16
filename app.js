@@ -229,5 +229,4 @@ function submit() {
 function playSample(sampleHTMLId) {
 	const audio = new Audio($(`#${sampleHTMLId}`).attr("src"));
 	audio.play();
-
 }
