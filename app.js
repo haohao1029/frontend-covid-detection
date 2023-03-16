@@ -222,7 +222,7 @@ function submit() {
 		}
 		loader.addClass('done');
 	};
-	xhr.open("POST", "https://covid-detection.leadinghao.me:8000/covid_detection", true);
+	xhr.open("POST", "https://api.leadinghao.me/covid_detection", true);
 	xhr.send(formData);
 }
 
