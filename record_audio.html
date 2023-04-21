@@ -150,6 +150,30 @@
                 </div>
               </div>
               <div class="mb-3 row">
+                <label for="" class="col-sm-2 col-form-label">Current Status?</label>
+                <div class="col-sm-10 ">
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" onChange="handleRadioData('current_status')" name="current_status" id="covid" value="covid" />
+                    <label class="form-check-label" for="covid">
+                      Covid
+                    </label>
+                  </div>
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" onChange="handleRadioData('current_status')" name="current_status" id="not_covid" value="not_covid" />
+                    <label class="form-check-label" for="not_covid" >
+                      Not Covid
+                    </label>
+                  </div>
+                  <div class="form-check vaccination_input">
+                    <input class="form-check-input" type="radio" onChange="handleRadioData('current_status')" name="current_status" id="not_sure" value="not_sure" />
+                    <label class="form-check-label" for="not_sure" >
+                      Not Sure
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3 row">
                 <label for="" class="col-sm-2 col-form-label">Smoker?</label>
                 <div class="col-sm-10 ">
                   <div class="form-check vaccination_input">

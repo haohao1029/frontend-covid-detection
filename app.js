@@ -3,6 +3,7 @@ const jsondata = {
 	age: 0,
 	gender: 'male',
 	smoker: 'y',
+	current_status: 'not_sure',
 	vaccination_dose: 'no doses',
 	cold: false,
 	cough: false,
